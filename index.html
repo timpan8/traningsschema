@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111a20">
+  <meta name="description" content="Träningsschema för tisdag, onsdag och torsdag. Bocka av övningar och följ dina pass vecka för vecka.">
+  <title>Mitt träningsschema</title>
+  <style>
+    :root { color-scheme: dark; --bg:#10191e; --surface:#1b282e; --surface2:#24343b; --line:#38505a; --text:#edf5f2; --muted:#b3c4c5; --accent:#c6f56d; --ink:#142016; --focus:#9bd9ff; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    * { box-sizing:border-box }
+    body { margin:0; background:radial-gradient(circle at 80% -5%,#29453b 0,transparent 34rem),var(--bg); color:var(--text); line-height:1.5 }
+    button { font:inherit; cursor:pointer }
+    button:focus-visible, summary:focus-visible { outline:3px solid var(--focus); outline-offset:3px }
+    .shell { max-width:1050px; margin:auto; padding:30px clamp(16px,4vw,48px) 90px }
+    header { display:flex; justify-content:space-between; align-items:flex-start; gap:24px; border-bottom:1px solid var(--line); padding-bottom:23px }
+    .eyebrow { margin:0 0 8px; font-size:.84rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; color:var(--accent) }
+    h1 { font-size:clamp(2rem,6vw,3.4rem); line-height:1.06; letter-spacing:-.04em; margin:0 }
+    .intro { color:var(--muted); max-width:34rem; margin:12px 0 0 }
+    .badge { border:1px solid var(--line); border-radius:100px; padding:9px 14px; color:var(--muted); white-space:nowrap; font-size:.9rem }
+    .weekbar { display:flex; align-items:center; justify-content:space-between; gap:16px; margin:28px 0 20px }
+    .weekbar strong { display:block; font-size:1.12rem }
+    .weekbar small { color:var(--muted) }
+    .week-actions { display:flex; align-items:center; gap:8px }
+    .iconbutton,.today { border:1px solid var(--line); background:var(--surface); color:var(--text); border-radius:10px; min-height:42px; padding:8px 14px }
+    .iconbutton { font-size:1.3rem; line-height:1; min-width:42px }
+    .today:hover,.iconbutton:hover { border-color:var(--accent) }
+    .tabs { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:0 0 20px }
+    .tab { text-align:left; border:1px solid var(--line); border-radius:16px; background:var(--surface); color:var(--text); padding:17px 18px; min-height:100px }
+    .tab[aria-selected="true"] { border-color:var(--accent); background:#293d35; box-shadow:inset 0 0 0 1px var(--accent) }
+    .tab span,.tab small { display:block }
+    .tab span { font-size:1.2rem; font-weight:760 }
+    .tab small { color:var(--muted); margin-top:5px }
+    .workout { background:var(--surface); border:1px solid var(--line); border-radius:22px; overflow:hidden }
+    .workout-head { padding:25px clamp(17px,4vw,32px); border-bottom:1px solid var(--line) }
+    .workout-head h2 { margin:0 0 7px; font-size:clamp(1.5rem,4vw,2rem); line-height:1.16 }
+    .workout-head p { margin:0; color:var(--muted) }
+    .progress-row { display:flex; align-items:center; gap:15px; margin-top:21px }
+    .progress-row span { white-space:nowrap; color:var(--accent); font-weight:760 }
+    progress { display:block; width:100%; height:12px; accent-color:var(--accent) }
+    .warmup,.finish { margin:20px clamp(17px,4vw,32px); padding:16px 18px; background:var(--surface2); border-radius:12px }
+    .warmup b,.finish b { display:block; color:var(--accent); margin-bottom:3px }
+    .warmup p,.finish p { margin:0; color:var(--text) }
+    .list { padding:0 clamp(12px,3vw,28px) }
+    .exercise { border-top:1px solid var(--line); padding:15px 5px }
+    .exercise:first-child { border-top:0 }
+    .exercise-top { display:flex; align-items:center; gap:12px }
+    .check { width:38px; height:38px; flex:0 0 38px; border-radius:10px; background:transparent; color:var(--accent); border:2px solid #7b9b88; font-size:1.25rem; font-weight:800; line-height:1 }
+    .check[aria-pressed="true"] { background:var(--accent); color:var(--ink); border-color:var(--accent) }
+    .exercise-body { flex:1; min-width:0 }
+    .exercise-name { font-weight:750; font-size:1.03rem; display:block }
+    .exercise.done .exercise-name { color:var(--muted); text-decoration:line-through; text-decoration-color:#8ca69e }
+    .dosage { color:var(--muted); display:block; font-size:.9rem; margin-top:2px }
+    details { margin:8px 0 0 50px; color:var(--muted) }
+    summary { color:var(--accent); cursor:pointer; width:max-content; font-size:.92rem; list-style:none }
+    summary::-webkit-details-marker { display:none }
+    summary::after { content:" +" }
+    details[open] summary::after { content:" −" }
+    details p { max-width:700px; margin:8px 0 3px }
+    .workout-foot { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; padding:0 clamp(17px,4vw,32px) 24px }
+    .workout-foot small { color:var(--muted) }
+    .reset { color:var(--muted); background:none; border:0; text-decoration:underline; padding:6px 0 }
+    .notes { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:24px }
+    .note { background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px }
+    .note h3 { margin:0 0 9px; font-size:1.12rem }
+    .note p { margin:0 0 9px; color:var(--muted) }
+    .note p:last-child { margin-bottom:0 }
+    .note ul { color:var(--muted); padding-left:20px; margin:6px 0 0 }
+    footer { color:var(--muted); font-size:.9rem; margin-top:24px }
+    @media(max-width:650px) { .shell{padding-top:22px} header{display:block} .badge{display:inline-block;margin-top:16px} .weekbar{align-items:flex-start} .tabs{gap:6px} .tab{padding:12px;min-height:90px} .tab span{font-size:1rem} .tab small{font-size:.79rem} .notes{grid-template-columns:1fr} .today{display:none} }
+    @media(max-width:390px) { .weekbar{display:block} .week-actions{margin-top:12px} .tab{padding:9px} .tab small{font-size:.72rem} }
+    @media(prefers-reduced-motion:no-preference) { .tab,.check,.iconbutton { transition:background-color .15s,border-color .15s,transform .15s } .check:active { transform:scale(.92) } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div><p class="eyebrow">Din träningsvecka</p><h1>Tre pass. Ett steg i taget.</h1><p class="intro">Tisdag till torsdag · maskiner och hantlar · styrka med lite kondition. Öppna en övning för att se hur den går till.</p></div>
+      <span class="badge">6–8 veckors upplägg</span>
+    </header>
+    <main>
+      <div class="weekbar">
+        <div><strong id="week-label"></strong><small>Avbockningen sparas för denna vecka</small></div>
+        <div class="week-actions"><button class="iconbutton" id="prev" aria-label="Föregående vecka">‹</button><button class="today" id="today">Denna vecka</button><button class="iconbutton" id="next" aria-label="Nästa vecka">›</button></div>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Välj träningsdag" id="tabs"></div>
+      <section class="workout" id="workout" role="tabpanel" aria-live="polite"></section>
+      <div class="notes">
+        <section class="note"><h3>Så väljer du vikt</h3><p>Värm upp och välj en belastning där du har ungefär 2–3 repetitioner kvar med bra teknik. Börja lugnt de första 2–3 veckorna efter uppehållet.</p><p>När du når övre delen av repetitionsintervallet i alla set, öka vikten nästa gång. Är maskinen redan på max: gör fler kontrollerade repetitioner, pausa kort i vändläget eller prova en sida i taget.</p></section>
+        <section class="note"><h3>Om du går dit fler dagar</h3><p>Måndag eller fredag: 30–45 min rask gång, cykel eller crosstrainer i prattempo. Fredag kan du också lägga till cirka 15 min lätt mage eller armar.</p><p>Anteckna gärna vikt och repetitioner i mobilen. Efter 6–8 veckor kan du anpassa passen efter hur kroppen svarat.</p></section>
+      </div>
+    </main>
+    <footer>Avbockning lagras bara i den här webbläsaren på den här enheten. Den synkas inte mellan mobil och dator.</footer>
+  </div>
+  <script>
+    const days = [
+      { id:'tisdag', title:'Tisdag', focus:'Bröst · axlar · triceps', heading:'Pressa & bygg', time:'Cirka 70–90 min', warmup:'7–10 min rask gång, cykel eller crosstrainer. Gör sedan 1–2 lätta uppvärmningsset i bröstpressen.', finish:'10–15 min kondition: 1 minut ganska hårt + 2 minuter lugnt, 4–5 rundor.', exercises:[
+        ['Bröstpress i maskin','3 × 8–12','90–120 s','Ställ in sitsen så handtagen hamnar ungefär i brösthöjd. Håll skuldrorna stabila, pressa framåt och bromsa på vägen tillbaka.'],
+        ['Pec deck / chest fly','3 × 10–15','60–90 s','Ställ in maskinen så du kan öppna armarna bekvämt. För handtagen eller underarmarna mot varandra med lätt böjda armbågar och återgå långsamt.'],
+        ['Lutande hantelpress på bänk','3 × 8–12','90 s','Ställ bänken i lätt lutning. Starta med hantlarna vid övre bröstet, pressa upp kontrollerat och sänk tills du känner en bekväm sträckning. Finns ingen ställbar bänk, välj en extra bröstpressvariant i maskin.'],
+        ['Axelpress i maskin','3 × 8–12','90 s','Sitt med ryggstöd och handtagen omkring axelhöjd. Pressa upp utan att svanka kraftigt; sänk kontrollerat.'],
+        ['Sidolyft med hantlar eller kabel','3 × 12–20','60 s','Lyft armarna ut åt sidorna med mjuka armbågar till ungefär axelhöjd. Använd en vikt där du slipper svinga kroppen.'],
+        ['Triceps pushdown i kabel','3 × 10–15','60–90 s','Håll armbågarna nära kroppen. Sträck underarmarna nedåt och låt sedan handtaget komma upp kontrollerat.'],
+        ['Triceps över huvudet, kabel eller hantel','2 × 10–15','60 s','Håll överarmarna relativt stilla och böj armbågarna bakom huvudet. Sträck ut utan att kasta vikten.']
+      ]},
+      { id:'onsdag', title:'Onsdag', focus:'Ben · mage', heading:'Starka ben', time:'Cirka 70–95 min', warmup:'7–10 min lugn cykel eller gång. Gör 1–2 lätta uppvärmningsset i benpressen.', finish:'10–20 min lugn cykel eller gång efter benpasset.', exercises:[
+        ['Benpress','4 × 8–15','2 min','Placera fötterna ungefär höftbrett. Sänk släden så långt du kan med stabil rygg och kontroll, pressa sedan upp utan att låsa knäna hårt.'],
+        ['Lårcurl','3 × 10–15','90 s','Ställ in maskinens led och dyna efter dina knän och ben. Böj knäna kontrollerat, pausa kort och släpp tillbaka långsamt.'],
+        ['Benspark','3 × 10–15','90 s','Justera maskinen efter knäleden. Sträck benen med kontroll, håll en kort stund i toppläget och sänk lugnt.'],
+        ['Rumänska marklyft med hantlar eller skivstång','3 × 8–12','90–120 s','Håll vikterna nära benen, böj knäna lätt och fäll i höften med neutral rygg. Vänd när baksida lår sträcks och res dig genom att föra höften framåt.'],
+        ['Utfall eller Bulgarian split squat','2–3 × 8–12/ben','90 s','Ta ett steg eller ställ bakre foten på en bänk. Sänk kroppen kontrollerat över främre benet och tryck dig upp. Börja med 2 set per ben om övningen är ny.'],
+        ['Vadpress','3 × 12–20','60–90 s','Sänk hälarna lugnt för en stretch, pressa sedan upp på tå. Undvik att studsa.'],
+        ['Cable crunch eller magmaskin','3 × 10–15','60 s','Runda överkroppen genom att spänna magen och föra revbenen mot bäckenet. Låt höften vara relativt stilla.'],
+        ['Planka','2–3 × 30–60 s','60 s','Placera armbågarna under axlarna, spänn mage och säte och håll kroppen rak. Avbryt när positionen inte längre går att hålla.']
+      ]},
+      { id:'torsdag', title:'Torsdag', focus:'Rygg · biceps · baksida axlar', heading:'Dra & stärk ryggen', time:'Cirka 70–90 min', warmup:'7–10 min rask gång, cykel eller crosstrainer. Gör 1–2 lätta uppvärmningsset i latsdraget.', finish:'15–20 min kondition i lugnt tempo, eller 30 sekunder hårt + 90 sekunder lugnt, 6–8 rundor.', exercises:[
+        ['Latsdrag','3 × 8–12','90–120 s','Greppa stången lite bredare än axlarna. Dra armbågarna ned mot sidorna så stången närmar sig övre bröstet; låt armarna sträckas upp kontrollerat.'],
+        ['Sittande rodd','3 × 8–12','90–120 s','Sitt stadigt och dra handtaget mot nedre bröstet eller magen. För armbågarna bakåt, håll bålen stilla och sträck ut armarna långsamt.'],
+        ['Enarmsrodd med hantel eller kabel','3 × 10–15/sida','60–90 s','Stöd kroppen med den fria handen. Dra armbågen mot höften, pausa kort och sänk vikten utan att vrida överkroppen.'],
+        ['Reverse pec deck / bakre axel','3 × 12–20','60 s','Sitt vänd mot maskinens ryggstöd. För armarna ut och bakåt med mjuka armbågar och sänk långsamt.'],
+        ['Face pulls','2–3 × 12–20','60 s','Sätt repet ungefär i ansiktshöjd. Dra mot ansiktet med höga armbågar, dela på händerna och återgå kontrollerat.'],
+        ['Bicepscurl med hantlar','3 × 8–12','60–90 s','Håll armbågarna nära kroppen. Böj armarna utan att svinga ryggen och sänk hantlarna lugnt.'],
+        ['Hammer curls','2–3 × 10–15','60 s','Håll handflatorna vända mot varandra genom hela rörelsen. Lyft och sänk med stilla överarmar.'],
+        ['Valfri magövning','3 × 10–20','60 s','Välj till exempel cable crunch eller magmaskin. Arbeta långsamt och låt magen göra jobbet.']
+      ]}
+    ];
+
+    const STORAGE = 'traningsschema-v1';
+    const today = new Date(); today.setHours(12,0,0,0);
+    const monday = date => { const d = new Date(date); d.setDate(d.getDate() - (d.getDay()+6)%7); d.setHours(12,0,0,0); return d; };
+    const keyOf = date => `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
+    let week = monday(today);
+    let active = today.getDay() >= 2 && today.getDay() <= 4 ? today.getDay()-2 : 0;
+    let saved = {};
+    try { saved = JSON.parse(localStorage.getItem(STORAGE) || '{}') || {}; } catch { saved = {}; }
+    const labelDate = date => new Intl.DateTimeFormat('sv-SE',{day:'numeric',month:'short'}).format(date);
+    function completed(day) { return new Set(saved[keyOf(week)]?.[day] || []); }
+    function persist(day,set) { const key=keyOf(week); saved[key] ||= {}; saved[key][day] = [...set]; try { localStorage.setItem(STORAGE,JSON.stringify(saved)); } catch { /* Visas fortfarande under denna sidvisning. */ } }
+    function paint() {
+      const end = new Date(week); end.setDate(end.getDate()+6);
+      document.getElementById('week-label').textContent=`${labelDate(week)} – ${labelDate(end)} ${end.getFullYear()}`;
+      const tabs=document.getElementById('tabs'); tabs.replaceChildren();
+      days.forEach((day,index)=>{ const button=document.createElement('button'); button.className='tab'; button.type='button'; button.id=`tab-${day.id}`; button.setAttribute('role','tab'); button.setAttribute('aria-selected',String(index===active)); button.setAttribute('aria-controls','workout'); const n=completed(day.id).size; button.innerHTML=`<span>${day.title}</span><small>${n}/${day.exercises.length} klara · ${day.focus}</small>`; button.addEventListener('click',()=>{active=index;paint()}); tabs.append(button); });
+      const day=days[active], done=completed(day.id), panel=document.getElementById('workout');
+      panel.setAttribute('aria-labelledby',`tab-${day.id}`); panel.replaceChildren();
+      const head=document.createElement('div'); head.className='workout-head'; head.innerHTML=`<h2>${day.heading}</h2><p>${day.focus} · ${day.time}</p><div class="progress-row"><progress max="${day.exercises.length}" value="${done.size}" aria-label="Avklarade övningar"></progress><span>${done.size} av ${day.exercises.length}</span></div>`; panel.append(head);
+      const warm=document.createElement('div'); warm.className='warmup'; warm.innerHTML=`<b>Uppvärmning</b><p>${day.warmup}</p>`; panel.append(warm);
+      const list=document.createElement('div'); list.className='list';
+      day.exercises.forEach(([name,sets,rest,how],index)=>{
+        const row=document.createElement('div'); row.className='exercise'+(done.has(index)?' done':'');
+        const top=document.createElement('div'); top.className='exercise-top';
+        const button=document.createElement('button'); button.type='button'; button.className='check'; button.textContent=done.has(index)?'✓':''; button.setAttribute('aria-label',`${done.has(index)?'Ångra avbockning':'Bocka av'} ${name}`); button.setAttribute('aria-pressed',String(done.has(index)));
+        button.addEventListener('click',()=>{const next=completed(day.id); next.has(index)?next.delete(index):next.add(index); persist(day.id,next); paint(); document.querySelectorAll('.check')[index]?.focus();});
+        const body=document.createElement('div'); body.className='exercise-body'; const title=document.createElement('span'); title.className='exercise-name'; title.textContent=name; const dose=document.createElement('span'); dose.className='dosage'; dose.textContent=`${sets} · Vila ${rest}`; body.append(title,dose); top.append(button,body);
+        const details=document.createElement('details'); const summary=document.createElement('summary'); summary.textContent='Så gör du'; const desc=document.createElement('p'); desc.textContent=how; details.append(summary,desc); row.append(top,details); list.append(row);
+      }); panel.append(list);
+      const finish=document.createElement('div'); finish.className='finish'; finish.innerHTML=`<b>Kondition efteråt</b><p>${day.finish}</p>`; panel.append(finish);
+      const foot=document.createElement('div'); foot.className='workout-foot'; const tip=document.createElement('small'); tip.textContent='Bocka av varje övning när du är klar med alla set.'; const reset=document.createElement('button'); reset.type='button'; reset.className='reset'; reset.textContent='Nollställ detta pass'; reset.addEventListener('click',()=>{if(confirm(`Nollställa avbockningen för ${day.title.toLowerCase()} den här veckan?`)){persist(day.id,new Set());paint();}}); foot.append(tip,reset); panel.append(foot);
+    }
+    document.getElementById('prev').addEventListener('click',()=>{week.setDate(week.getDate()-7);paint()});
+    document.getElementById('next').addEventListener('click',()=>{week.setDate(week.getDate()+7);paint()});
+    document.getElementById('today').addEventListener('click',()=>{week=monday(today);paint()});
+    document.getElementById('tabs').addEventListener('keydown',event=>{if(event.key!=='ArrowRight'&&event.key!=='ArrowLeft')return;event.preventDefault();active=(active+(event.key==='ArrowRight'?1:2))%3;paint();document.getElementById(`tab-${days[active].id}`).focus()});
+    paint();
+  </script>
+</body>
+</html>
