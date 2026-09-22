@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#111a20">
   <meta name="description" content="Träningsschema för tisdag, onsdag och torsdag. Bocka av övningar och följ dina pass vecka för vecka.">
   <title>Mitt träningsschema</title>
+  <link rel="stylesheet" href="guides.css">
   <style>
     :root { color-scheme: dark; --bg:#10191e; --surface:#1b282e; --surface2:#24343b; --line:#38505a; --text:#edf5f2; --muted:#b3c4c5; --accent:#c6f56d; --ink:#142016; --focus:#9bd9ff; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
     * { box-sizing:border-box }
@@ -75,7 +76,7 @@
 <body>
   <div class="shell">
     <header>
-      <div><p class="eyebrow">Din träningsvecka</p><h1>Tre pass. Ett steg i taget.</h1><p class="intro">Tisdag till torsdag · maskiner och hantlar · styrka med lite kondition. Öppna en övning för att se hur den går till.</p></div>
+      <div><p class="eyebrow">Din träningsvecka</p><h1>Tre pass. Ett steg i taget.</h1><p class="intro">Tisdag till torsdag · maskiner och hantlar · styrka med lite kondition. Tryck på ”Visa övning” för att se utrustningen och hur du gör.</p></div>
       <span class="badge">6–8 veckors upplägg</span>
     </header>
     <main>
@@ -92,6 +93,19 @@
     </main>
     <footer>Avbockning lagras bara i den här webbläsaren på den här enheten. Den synkas inte mellan mobil och dator.</footer>
   </div>
+  <dialog id="exercise-guide" aria-labelledby="guide-title">
+    <div class="guide-header"><div><p class="eyebrow">Din övningsguide</p><h2 id="guide-title"></h2><p id="guide-dose"></p></div><button type="button" id="guide-close" aria-label="Stäng övningsguiden">Stäng ✕</button></div>
+    <div class="guide-content">
+      <div id="guide-variants" role="group" aria-label="Välj variant"></div>
+      <p class="variant-hint" id="variant-hint" hidden>Välj en variant att göra i ditt pass.</p>
+      <div class="guide-grid">
+        <div><div id="guide-media"></div><p class="media-caption" id="media-caption"></p><a id="guide-source" target="_blank" rel="noopener noreferrer">Bild och demonstration: StrengthLog ↗</a></div>
+        <div class="guide-instructions"><h3 id="variant-title"></h3><p class="equipment" id="guide-equipment"></p><p class="machine-note">Maskinens utseende kan skilja sig mellan gym.</p><h3>Så gör du</h3><ol id="guide-steps"></ol><p class="guide-tip">Gör rörelsen lugnt och kontrollerat.</p></div>
+      </div>
+    </div>
+  </dialog>
+  <script src="guides.js"></script>
+  <script src="guide-ui.js"></script>
   <script>
     const days = [
       { id:'tisdag', title:'Tisdag', focus:'Bröst · axlar · triceps', heading:'Pressa & bygg', time:'Cirka 70–90 min', warmup:'7–10 min rask gång, cykel eller crosstrainer. Gör sedan 1–2 lätta uppvärmningsset i bröstpressen.', finish:'10–15 min kondition: 1 minut ganska hårt + 2 minuter lugnt, 4–5 rundor.', exercises:[
@@ -152,7 +166,8 @@
         const button=document.createElement('button'); button.type='button'; button.className='check'; button.textContent=done.has(index)?'✓':''; button.setAttribute('aria-label',`${done.has(index)?'Ångra avbockning':'Bocka av'} ${name}`); button.setAttribute('aria-pressed',String(done.has(index)));
         button.addEventListener('click',()=>{const next=completed(day.id); next.has(index)?next.delete(index):next.add(index); persist(day.id,next); paint(); document.querySelectorAll('.check')[index]?.focus();});
         const body=document.createElement('div'); body.className='exercise-body'; const title=document.createElement('span'); title.className='exercise-name'; title.textContent=name; const dose=document.createElement('span'); dose.className='dosage'; dose.textContent=`${sets} · Vila ${rest}`; body.append(title,dose); top.append(button,body);
-        const details=document.createElement('details'); const summary=document.createElement('summary'); summary.textContent='Så gör du'; const desc=document.createElement('p'); desc.textContent=how; details.append(summary,desc); row.append(top,details); list.append(row);
+        const guideButton=document.createElement('button'); guideButton.type='button'; guideButton.className='show-guide'; guideButton.textContent='Visa övning ↗'; guideButton.setAttribute('aria-label',`Visa övning: ${name}`); guideButton.setAttribute('aria-haspopup','dialog'); guideButton.addEventListener('click',()=>openExerciseGuide(day.id,index,name,`${sets} · Vila ${rest}`,guideButton));
+        const details=document.createElement('details'); const summary=document.createElement('summary'); summary.textContent='Snabb instruktion'; const desc=document.createElement('p'); desc.textContent=how; details.append(summary,desc); row.append(top,guideButton,details); list.append(row);
       }); panel.append(list);
       const finish=document.createElement('div'); finish.className='finish'; finish.innerHTML=`<b>Kondition efteråt</b><p>${day.finish}</p>`; panel.append(finish);
       const foot=document.createElement('div'); foot.className='workout-foot'; const tip=document.createElement('small'); tip.textContent='Bocka av varje övning när du är klar med alla set.'; const reset=document.createElement('button'); reset.type='button'; reset.className='reset'; reset.textContent='Nollställ detta pass'; reset.addEventListener('click',()=>{if(confirm(`Nollställa avbockningen för ${day.title.toLowerCase()} den här veckan?`)){persist(day.id,new Set());paint();}}); foot.append(tip,reset); panel.append(foot);

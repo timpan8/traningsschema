@@ -1,0 +1,38 @@
+# Övningsbilder och demonstrationer
+
+Källa: [StrengthLog](https://www.strengthlog.com/exercise-directory/). Hämtade 2026-09-22 för denna personliga, icke-kommersiella träningssida.
+
+Källans övningskatalog tillåter användning av beskrivningar, bilder och filmer på icke-kommersiella webbplatser med källänk. Varje guide länkar till sin originalartikel. GIF-demonstrationerna har konverterats till MP4 och första bildrutan till JPG för snabbare laddning och möjlighet att pausa. Plankan använder en stillbild eftersom övningen är statisk.
+
+- [Bröstpress i maskin](https://www.strengthlog.com/machine-chest-press/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/03/machine-chest-press.gif?resize=600%2C600&ssl=1)
+- [Pec deck – armbågsdynor](https://www.strengthlog.com/pec-deck/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/04/pec-deck.gif?resize=600%2C600&ssl=1)
+- [Chest fly – handtag](https://www.strengthlog.com/machine-chest-fly/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2025/11/machine-chest-fly.gif?resize=700%2C700&ssl=1)
+- [Lutande hantelpress](https://www.strengthlog.com/dumbbell-incline-press/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/03/Dumbbell-Incline-Press.gif?resize=600%2C600&ssl=1)
+- [Axelpress i maskin](https://www.strengthlog.com/machine-shoulder-press/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/03/machine-shoulder-press.gif?resize=600%2C600&ssl=1)
+- [Sidolyft med hantlar](https://www.strengthlog.com/dumbbell-lateral-raise/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/12/Dumbbell-Lateral-Raise.gif?resize=600%2C600&ssl=1)
+- [Sidolyft i kabel](https://www.strengthlog.com/cable-lateral-raise/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2025/11/cable-lateral-raise.gif?resize=700%2C700&ssl=1)
+- [Triceps pushdown](https://www.strengthlog.com/tricep-pushdown-with-rope/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/03/triceps-pushdown-with-rope.gif?resize=600%2C600&ssl=1)
+- [Triceps över huvudet – kabel](https://www.strengthlog.com/overhead-cable-triceps-extension/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2025/11/overhead-tricep-extension-lower-position.gif?resize=700%2C700&ssl=1)
+- [Triceps över huvudet – hantel](https://www.strengthlog.com/dumbbell-standing-triceps-extension/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/03/Dumbbell-Standing-Triceps-Extension.gif?resize=600%2C600&ssl=1)
+- [Benpress](https://www.strengthlog.com/leg-press/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2025/11/leg-press.gif?resize=700%2C700&ssl=1)
+- [Sittande lårcurl](https://www.strengthlog.com/seated-leg-curl/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/03/leg-curl-seated.gif?resize=600%2C600&ssl=1)
+- [Liggande lårcurl](https://www.strengthlog.com/lying-leg-curl/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2023/09/lying-leg-curl.gif?resize=700%2C700&ssl=1)
+- [Benspark](https://www.strengthlog.com/leg-extension/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/03/leg-extension-seated.gif?resize=600%2C600&ssl=1)
+- [Rumänska marklyft – hantlar](https://www.strengthlog.com/dumbbell-romanian-deadlift/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2022/09/romanian-deadlift-with-dumbbells.gif?resize=600%2C600&ssl=1)
+- [Rumänska marklyft – skivstång](https://www.strengthlog.com/romanian-deadlift/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2022/01/Romanian-deadlift.gif?resize=600%2C600&ssl=1)
+- [Utfall med hantlar](https://www.strengthlog.com/dumbbell-lunge/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/03/Dumbbell-Lunge.gif?resize=600%2C600&ssl=1)
+- [Bulgarian split squat](https://www.strengthlog.com/bulgarian-split-squat/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2023/02/Bulgarian-split-squat-barbell.gif?resize=600%2C600&ssl=1)
+- [Stående vadpress](https://www.strengthlog.com/standing-calf-raise/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/03/calf-raise-standing.gif?resize=600%2C600&ssl=1)
+- [Sittande vadpress](https://www.strengthlog.com/seated-calf-raise/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/03/calf-raise-seated.gif?resize=600%2C600&ssl=1)
+- [Vadpress i benpress](https://www.strengthlog.com/calf-raise-in-leg-press/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2025/10/calf-raise-in-leg-press.gif?resize=700%2C700&ssl=1)
+- [Cable crunch](https://www.strengthlog.com/cable-crunch/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/03/cable-crunch.gif?resize=600%2C600&ssl=1)
+- [Magmaskin](https://www.strengthlog.com/machine-crunch/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/03/machine-crunch.gif?resize=600%2C600&ssl=1)
+- [Planka](https://www.strengthlog.com/plank/) — [originalmedia](https://www.strengthlog.com/wp-content/uploads/2020/03/Plank.jpg)
+- [Latsdrag](https://www.strengthlog.com/lat-pulldown-with-pronated-grip/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/03/lat-pulldown-with-pronated-grip.gif?resize=600%2C600&ssl=1)
+- [Sittande kabelrodd](https://www.strengthlog.com/cable-close-grip-seated-row/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/03/cable-row-seated-narrow-grip.gif?resize=600%2C600&ssl=1)
+- [Enarmsrodd med hantel](https://www.strengthlog.com/dumbbell-row/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/03/Dumbbell-Row.gif?resize=600%2C600&ssl=1)
+- [Enarmsrodd i kabel](https://www.strengthlog.com/one-handed-cable-row/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/04/cable-row-seated-single-arm.gif?resize=600%2C600&ssl=1)
+- [Reverse pec deck](https://www.strengthlog.com/reverse-machine-fly/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2025/11/reverse-machine-fly.gif?resize=700%2C700&ssl=1)
+- [Face pulls](https://www.strengthlog.com/face-pull/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/05/face-pull.gif?resize=600%2C600&ssl=1)
+- [Bicepscurl](https://www.strengthlog.com/dumbbell-curl/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/02/Hantelcurl.gif?resize=600%2C600&ssl=1)
+- [Hammer curls](https://www.strengthlog.com/hammer-curl/) — [originalmedia](https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/02/Hammer-curl.gif?resize=600%2C600&ssl=1)
